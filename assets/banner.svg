@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f24" />
+      <stop offset="50%" stop-color="#141e46" />
+      <stop offset="100%" stop-color="#070a1e" />
+    </linearGradient>
+
+    <!-- Glowing Accent Gradient -->
+    <linearGradient id="glow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="50%" stop-color="#4facfe" />
+      <stop offset="100%" stop-color="#0000fe" />
+    </linearGradient>
+
+    <!-- Pulse Animation -->
+    <style>
+      .pulse-circle {
+        animation: pulse 3s infinite ease-in-out;
+      }
+      .flow-line {
+        stroke-dasharray: 10, 15;
+        animation: flow 4s infinite linear;
+      }
+      .sharding-node {
+        animation: glow 2s infinite alternate ease-in-out;
+      }
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.4; }
+        50% { transform: scale(1.15); opacity: 0.8; }
+      }
+      @keyframes flow {
+        from { stroke-dashoffset: 50; }
+        to { stroke-dashoffset: 0; }
+      }
+      @keyframes glow {
+        from { fill-opacity: 0.6; filter: drop-shadow(0 0 2px #00f2fe); }
+        to { fill-opacity: 1; filter: drop-shadow(0 0 8px #00f2fe); }
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="200" rx="15" fill="url(#bg-grad)" />
+
+  <!-- Technical grid/particles representing nodes -->
+  <g stroke="#ffffff" stroke-opacity="0.05" stroke-width="1">
+    <line x1="50" y1="0" x2="50" y2="200" />
+    <line x1="150" y1="0" x2="150" y2="200" />
+    <line x1="250" y1="0" x2="250" y2="200" />
+    <line x1="350" y1="0" x2="350" y2="200" />
+    <line x1="450" y1="0" x2="450" y2="200" />
+    <line x1="550" y1="0" x2="550" y2="200" />
+    <line x1="650" y1="0" x2="650" y2="200" />
+    <line x1="750" y1="0" x2="750" y2="200" />
+    <line x1="0" y1="50" x2="800" y2="50" />
+    <line x1="0" y1="100" x2="800" y2="100" />
+    <line x1="0" y1="150" x2="800" y2="150" />
+  </g>
+
+  <!-- Flow lines representing memory sharding (ZeRO) -->
+  <path d="M 100,100 L 700,100" stroke="#00f2fe" stroke-width="2" fill="none" class="flow-line" />
+  <path d="M 100,60 L 700,60" stroke="#4facfe" stroke-width="1.5" fill="none" class="flow-line" style="animation-duration: 6s; stroke-dasharray: 5, 20;" />
+  <path d="M 100,140 L 700,140" stroke="#0000fe" stroke-width="1.5" fill="none" class="flow-line" style="animation-duration: 5s; stroke-dasharray: 8, 12;" />
+
+  <!-- Sharding Nodes -->
+  <circle cx="100" cy="100" r="12" fill="#00f2fe" class="sharding-node" />
+  <circle cx="300" cy="100" r="8" fill="#4facfe" class="sharding-node" style="animation-delay: 0.5s;" />
+  <circle cx="500" cy="100" r="8" fill="#4facfe" class="sharding-node" style="animation-delay: 1s;" />
+  <circle cx="700" cy="100" r="12" fill="#00f2fe" class="sharding-node" style="animation-delay: 1.5s;" />
+
+  <!-- Ambient Glow -->
+  <circle cx="400" cy="100" r="150" fill="#00f2fe" fill-opacity="0.05" class="pulse-circle" style="transform-origin: 400px 100px;" />
+
+  <!-- Title Text -->
+  <text x="400" y="85" font-family="'Inter', -apple-system, sans-serif" font-size="28" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="4">
+    AWESOME DEEPSPEED
+  </text>
+  <text x="400" y="125" font-family="'Inter', -apple-system, sans-serif" font-size="18" font-weight="600" fill="#00f2fe" text-anchor="middle" letter-spacing="8">
+    OPTIMIZATION
+  </text>
+  <text x="400" y="160" font-family="'Inter', -apple-system, sans-serif" font-size="10" font-weight="400" fill="#a0aec0" text-anchor="middle" letter-spacing="1">
+    Distributed Training &amp; Inference Scaling Memory Engines
+  </text>
+</svg>

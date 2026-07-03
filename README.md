@@ -1,5 +1,10 @@
-# Awesome-DeepSpeed-Optimization
-## DeepSpeed Optimization: History, Progression, Variants, & Applications
+# 🚀 Awesome-DeepSpeed-Optimization
+
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome DeepSpeed Optimization Banner" width="100%">
+</p>
+
+## ⚡ DeepSpeed Optimization: History, Progression, Variants, & Applications
 
 **DeepSpeed** is an industry-standard, hardware-aware distributed training and inference optimization library developed by Microsoft. It introduces low-level CUDA kernels, memory management engines, and cluster orchestration layers designed to scale up deep learning operations past traditional single-node boundaries. The foundational breakthrough of DeepSpeed is the **ZeRO (Zero Redundancy Optimizer)** memory optimization framework, which eliminates memory redundancies across distributed data-parallel groups [INDEX: 22]. 
 
@@ -7,7 +12,7 @@ By sharding model states (optimizer states, gradients, and parameters) across av
 
 ---
 
-## 1. The Macro Chronological Evolution
+## 📅 1. The Macro Chronological Evolution
 
 The technical optimization of large-scale distributed training has transitioned from uniform memory sharding to offloading, pipeline partitioning, and modern unified low-precision inference networks.
 
@@ -29,7 +34,7 @@ flowchart LR
 
 ---
 
-## 2. Core Functional & Architectural Variants
+## 🧩 2. Core Functional & Architectural Variants
 
 The DeepSpeed ecosystem features specialized algorithmic sub-systems engineered to handle memory sharding, model partitioning, and runtime communication optimizations.
 
@@ -42,7 +47,7 @@ The DeepSpeed ecosystem features specialized algorithmic sub-systems engineered 
 
 ---
 
-## 3. Distributed Execution & Memory Allocation Matrix
+## 🔄 3. Distributed Execution & Memory Allocation Matrix
 
 To synchronize sharded states without triggering communication stalls, DeepSpeed coordinates collective primitives concurrently across deep model pipelines.
 
@@ -66,7 +71,7 @@ flowchart TB
 
 ---
 
-## 4. Production Engineering Challenges & Hardware Solutions
+## 🛠️ 4. Production Engineering Challenges & Hardware Solutions
 
 Deploying large-scale DeepSpeed optimization pipelines across massive distributed high-performance computing clusters introduces intense communication and performance constraints.
 
@@ -77,7 +82,7 @@ Deploying large-scale DeepSpeed optimization pipelines across massive distribute
 
 ---
 
-## 5. Frontier Real-World AI Infrastructure Applications
+## 🌍 5. Frontier Real-World AI Infrastructure Applications
 
 | Infrastructure Application | System Role & Scaling Details | Year First Used | Paper Link |
 | :--- | :--- | :---: | :--- |
@@ -87,7 +92,7 @@ Deploying large-scale DeepSpeed optimization pipelines across massive distribute
 
 ---
 
-## References
+## 📚 References
 1. Rajbhandari, S., et al. (2020). ZeRO: Memory optimizations toward training trillion parameter models. *Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis* [INDEX: 22].
 2. Ren, J., et al. (2021). ZeRO-Offload: Democratizing Billion-Scale model training. *USENIX Annual Technical Conference (ATC)*.
 3. Rajbhandari, S., et al. (2021). ZeRO-Infinity: Breaking the Billion-Parameter wall with unconstrained heterogeneous memory spaces. *ACM SIGPLAN Notices*.
