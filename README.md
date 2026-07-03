@@ -115,6 +115,17 @@ To advance this documentation repository, threat-modeling context, or infrastruc
 * Generate a **comprehensive Markdown table** explicitly comparing standard Distributed Data Parallel (DDP), ZeRO-Stage 1, ZeRO-Stage 2, ZeRO-Stage 3, and ZeRO-Infinity across memory saving profiles, minimum inter-node network communication bandwidth demands, VRAM footprint parameters, and maximum operational model parameter caps [INDEX: 22].
 * Establish a **performance profiling notebook using DeepSpeed Runtime Tracking** to measure the exact wall-clock throughput variations, communication-to-computation overlap ratios, and VRAM compression benchmarks achieved when executing an enterprise pre-fill training pass over distributed server nodes.
 
+##  Star History
+<div align="center">
+<a href="https://www.star-history.com/?repos=ishandutta2007%2FAwesome-DeepSpeed-Optimization&type=date&legend=bottom-right">
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=ishandutta2007/Awesome-DeepSpeed-Optimization&type=date&theme=dark&legend=bottom-right" />
+<source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=ishandutta2007/Awesome-DeepSpeed-Optimization&type=date&legend=bottom-right" />
+<img alt="Star History Chart" src="https://api.star-history.com/chart?repos=ishandutta2007/Awesome-DeepSpeed-Optimization&type=date&legend=bottom-right" />
+</picture>
+</a>
+</div>
+
 ***
 
 **Follow-Up Options Matrix:**
