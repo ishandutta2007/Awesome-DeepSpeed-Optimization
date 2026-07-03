@@ -13,7 +13,11 @@ The technical optimization of large-scale distributed training has transitioned 
 
 
 ```mermaid
-[ZeRO-Stage 1 & 2 (2020)] ───> [ZeRO-Stage 3 & Offload (2021)] ───> [DeepSpeed-MoE & Pipeline (2022)] ───> [DeepSpeed-FastMS / Omni (Modern Era)](Optimizer & Gradient Shards)       (Parameter Shard + CPU/NVMe Swap)        (Sparse Expert Routing & PP Cuts)        (Fused Low-Rank Token Compression Engines)
+flowchart LR
+    A["ZeRO Stage 1 & 2 (2020)<br/>(Optimizer & Gradient Sharding)"]
+    --> B["ZeRO Stage 3 & Offload (2021)<br/>(Parameter Sharding + CPU/NVMe Offloading)"]
+    --> C["DeepSpeed-MoE & Pipeline Parallelism (2022)<br/>(Sparse Expert Routing & Pipeline Parallelism)"]
+    --> D["Modern DeepSpeed Optimizations<br/>(Kernel Fusion, Quantization & Memory-Efficient Training)"]
 ```
 
 *   **The Optimizer & Gradient Sharding Era (ZeRO-Stage 1 & 2, 2020)**
@@ -54,7 +58,16 @@ The DeepSpeed ecosystem features specialized algorithmic sub-systems engineered 
 To synchronize sharded states without triggering communication stalls, DeepSpeed coordinates collective primitives concurrently across deep model pipelines.
 
 ```mermaid
-FSDP / ZeRO-Stage 3 Execution Loop[Input Data Shard] ───> [All-Gather Layer Parameter Weights] ───> [Compute Layer Forward Pass Math]│▼[All-Gather Gradients] <─── [Reduce-Scatter Local Gradients] <─── [Evict Parameter Weights from VRAM]│▼[Update Local Optimizer Slice]
+flowchart TB
+    subgraph F["FSDP / ZeRO Stage 3 Execution Loop"]
+        A["Input Data Shard"]
+        --> B["All-Gather Layer Parameters"]
+        --> C["Compute Layer Forward Pass"]
+        --> D["Evict Layer Parameters from VRAM"]
+        --> E["Reduce-Scatter Local Gradients"]
+        --> F1["All-Gather Gradients (if required)"]
+        --> G["Update Local Optimizer Shard"]
+    end
 ```
 
 *   **Overlap Communication Kernels**
