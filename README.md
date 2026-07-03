@@ -1,7 +1,15 @@
 # 🚀 Awesome-DeepSpeed-Optimization
 
+<!-- SEO Metadata -->
+<meta name="description" content="A curated collection of awesome DeepSpeed optimization techniques, memory sharding (ZeRO), Mixture-of-Experts (MoE), pipeline parallelism, and low-precision inference scaling for large language models." />
+<meta name="keywords" content="DeepSpeed, ZeRO, PyTorch, Distributed Training, Mixture of Experts, Pipeline Parallelism, LLM Optimization, GPU Memory Optimization" />
+
 <p align="center">
   <img src="assets/banner.svg" alt="Awesome DeepSpeed Optimization Banner" width="100%">
+</p>
+
+<p align="center">
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a><a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
 </p>
 
 ## ⚡ DeepSpeed Optimization: History, Progression, Variants, & Applications
