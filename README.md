@@ -33,19 +33,19 @@ The technical optimization of large-scale distributed training has transitioned 
 
 The DeepSpeed ecosystem features specialized algorithmic sub-systems engineered to handle memory sharding, model partitioning, and runtime communication optimizations.
 
-### A. ZeRO-Sharding Spectrum (Stages 1, 2, 3)
-*   **Stage 1 (Optimizer State Partitioning):** Divides the FP32 AdamW optimizer states evenly across the data-parallel processes [INDEX: 11, 22]. Each GPU updates only its allocated optimizer slice, reducing the memory footprint by up to $4\times$ [INDEX: 22].
-*   **Stage 2 (Gradient Partitioning):** Shards the gradient tensors as they are calculated during the backward pass [INDEX: 22]. Nodes execute a `Reduce-Scatter` primitive, keeping only the specific gradient shard necessary to update their localized optimizer slice [INDEX: 22].
-*   **Stage 3 (Parameter Partitioning):** Fully shards the model parameter weights [INDEX: 22]. Layers execute an `All-Gather` step to temporarily fetch parameters from adjacent cards right before computation and immediately discard them afterward, making model capacity scale linearly with cluster size [INDEX: 22].
+- ### A. ZeRO-Sharding Spectrum (Stages 1, 2, 3)
+	*   **Stage 1 (Optimizer State Partitioning):** Divides the FP32 AdamW optimizer states evenly across the data-parallel processes [INDEX: 11, 22]. Each GPU updates only its allocated optimizer slice, reducing the memory footprint by up to $4\times$ [INDEX: 22].
+	*   **Stage 2 (Gradient Partitioning):** Shards the gradient tensors as they are calculated during the backward pass [INDEX: 22]. Nodes execute a `Reduce-Scatter` primitive, keeping only the specific gradient shard necessary to update their localized optimizer slice [INDEX: 22].
+	*   **Stage 3 (Parameter Partitioning):** Fully shards the model parameter weights [INDEX: 22]. Layers execute an `All-Gather` step to temporarily fetch parameters from adjacent cards right before computation and immediately discard them afterward, making model capacity scale linearly with cluster size [INDEX: 22].
 
-### B. ZeRO-Offload / ZeRO-Infinity (Heterogeneous Storage Swapping)
-*   **Mechanism:** Exploits non-GPU storage resources. It offloads optimizer states and parameter matrices to host CPU memory or local NVMe storage arrays over high-speed PCIe lanes during peak tensor memory allocations, de-allocating GPU VRAM dynamically.
+- ### B. ZeRO-Offload / ZeRO-Infinity (Heterogeneous Storage Swapping)
+	*   **Mechanism:** Exploits non-GPU storage resources. It offloads optimizer states and parameter matrices to host CPU memory or local NVMe storage arrays over high-speed PCIe lanes during peak tensor memory allocations, de-allocating GPU VRAM dynamically.
 
-### C. DeepSpeed-MoE (Sparse Expert Orchestration)
-*   **Mechanism:** Coordinates distributed training for sparsely routed Mixture-of-Experts architectures [INDEX: 15]. It shards expert parameter columns across data-parallel groups while optimizing collective communication paths, balancing compute processing loops without encountering server stalls [INDEX: 15].
+- ### C. DeepSpeed-MoE (Sparse Expert Orchestration)
+	*   **Mechanism:** Coordinates distributed training for sparsely routed Mixture-of-Experts architectures [INDEX: 15]. It shards expert parameter columns across data-parallel groups while optimizing collective communication paths, balancing compute processing loops without encountering server stalls [INDEX: 15].
 
-### D. DeepSpeed-Inference (Fused Compression Serving)
-*   **Mechanism:** A dedicated low-latency inference engine. It injects handwritten CUDA kernels that fuse the model's linear projection, layer normalization, and activation operations into a single continuous hardware step, completely avoiding slow High Bandwidth Memory (HBM) loops.
+- ### D. DeepSpeed-Inference (Fused Compression Serving)
+	*   **Mechanism:** A dedicated low-latency inference engine. It injects handwritten CUDA kernels that fuse the model's linear projection, layer normalization, and activation operations into a single continuous hardware step, completely avoiding slow High Bandwidth Memory (HBM) loops.
 
 ---
 
